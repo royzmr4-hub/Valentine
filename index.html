@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Be My Valentine 💖</title>
+
+<!-- 💎 Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+
+  /* 🌈 ANIMATED BACKGROUND */
+  background: linear-gradient(
+    120deg,
+    #ffb3c6,
+    #ffc8dd,
+    #ffe3ec,
+    #ffccd5
+  );
+  background-size: 400% 400%;
+  animation: bgMove 12s ease infinite;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes bgMove {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.card {
+  width: 100%;
+  max-width: 360px;
+  padding: 36px 26px;
+  text-align: center;
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(12px);
+  border-radius: 32px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+}
+
+h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 46px;
+  margin: 0;
+  color: #ff4d6d;
+}
+
+h2 {
+  margin-top: 16px;
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+}
+
+.buttons {
+  position: relative;
+  height: 150px;
+  margin-top: 34px;
+}
+
+button {
+  position: absolute;
+  border: none;
+  border-radius: 999px;
+  font-size: 18px;
+  padding: 14px 32px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+#yes {
+  background: linear-gradient(135deg, #38b000, #70e000);
+  color: white;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 14px 28px rgba(56,176,0,0.45);
+}
+
+#no {
+  background: linear-gradient(135deg, #ff4d6d, #ff758f);
+  color: white;
+  left: 65%;
+}
+
+/* ❤️ Floating hearts */
+.heart {
+  position: fixed;
+  bottom: -30px;
+  animation: floatUp 7s linear forwards;
+  opacity: 0.9;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-140vh) scale(2);
+    opacity: 0;
+  }
+}
+
+/* 🎉 Final popup */
+.popup {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #fff0f6, #ffb3c6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Pacifico', cursive;
+  font-size: 48px;
+  color: #ff4d6d;
+  animation: pop 0.6s ease;
+}
+
+@keyframes pop {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎵 MUSIC (romantic instrumental) -->
+<audio id="music" autoplay loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7c9c1dfc1c.mp3?filename=romantic-piano-112191.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+  <h1>Heyyy 💕</h1>
+  <h2>
+    Will you be my Valentine,
+    <span style="color:#ff4d6d;">Uchral</span>? 💖
+  </h2>
+
+  <div class="buttons">
+    <button id="yes" onclick="yesClick()">Yes 💖</button>
+    <button id="no" onclick="noClick()">No 🙈</button>
+  </div>
+</div>
+
+<script>
+let yesSize = 18;
+
+function noClick() {
+  yesSize += 12;
+  const yesBtn = document.getElementById("yes");
+  yesBtn.style.fontSize = yesSize + "px";
+  yesBtn.style.padding = (14 + yesSize/3) + "px";
+
+  const noBtn = document.getElementById("no");
+  noBtn.style.left = Math.random() * 70 + "%";
+  noBtn.style.top  = Math.random() * 70 + "px";
+
+  createHeart();
+}
+
+function yesClick() {
+  document.body.innerHTML = `
+    <div class="popup">
+      💖 YAYYY 💖<br>
+      Uchral 😘
+    </div>
+  `;
+}
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerText = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (26 + Math.random() * 30) + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 7000);
+}
+
+setInterval(createHeart, 600);
+</script>
+
+</body>
+</html>
