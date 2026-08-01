@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>e-Үйлчилгээ | Демо</title>
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --blue: #1769d1;
+  --dark-blue: #0c4fa5;
+  --light-blue: #eaf3ff;
+  --text: #172033;
+  --gray: #6b7280;
+  --border: #e3e8ef;
+  --white: #ffffff;
+  --green: #16a34a;
+}
+body {
+  font-family: Arial, "Noto Sans Mongolian", sans-serif;
+  background: #f5f7fb;
+  color: var(--text);
+}
+/* Header */
+header {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav {
+  max-width: 1200px;
+  height: 76px;
+  margin: auto;
+  padding: 0 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--blue);
+}
+.logo-icon {
+  width: 43px;
+  height: 43px;
+  background: var(--blue);
+  color: white;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 23px;
+}
+.menu {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+.menu a {
+  color: #3d4656;
+  text-decoration: none;
+  font-size: 15px;
+}
+.login-btn {
+  border: none;
+  background: var(--blue);
+  color: white;
+  padding: 12px 21px;
+  border-radius: 9px;
+  font-size: 15px;
+  cursor: pointer;
+}
+/* Hero */
+.hero {
+  background:
+    radial-gradient(circle at 80% 20%, #4e9cff 0%, transparent 30%),
+    linear-gradient(130deg, #084a9e, #1769d1);
+  color: white;
+  min-height: 400px;
+  padding: 78px 20px;
+}
+.hero-content {
+  max-width: 1050px;
+  margin: auto;
+  text-align: center;
+}
+.hero h1 {
+  font-size: clamp(32px, 5vw, 53px);
+  margin-bottom: 18px;
+}
+.hero p {
+  font-size: 18px;
+  opacity: .92;
+  margin-bottom: 34px;
+}
+.search-box {
+  max-width: 760px;
+  margin: auto;
+  background: white;
+  border-radius: 14px;
+  padding: 8px;
+  display: flex;
+  box-shadow: 0 15px 40px rgba(0,0,0,.18);
+}
+.search-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 15px 18px;
+  font-size: 16px;
+  color: var(--text);
+}
+.search-box button {
+  border: none;
+  background: var(--blue);
+  color: white;
+  padding: 0 25px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+}
+/* Main */
+main {
+  max-width: 1200px;
+  margin: auto;
+  padding: 55px 22px;
+}
+.section-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.section-title h2 {
+  font-size: 30px;
+  margin-bottom: 9px;
+}
+.section-title p {
+  color: var(--gray);
+}
+/* Categories */
+.categories {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 70px;
+}
+.category {
+  background: white;
+  border: 1px solid var(--border);
+  padding: 25px 18px;
+  border-radius: 15px;
+  text-align: center;
+  cursor: pointer;
+  transition: .2s;
+}
+.category:hover {
+  transform: translateY(-5px);
+  border-color: var(--blue);
+  box-shadow: 0 12px 25px rgba(20,80,160,.1);
+}
+.category-icon {
+  width: 58px;
+  height: 58px;
+  background: var(--light-blue);
+  color: var(--blue);
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 14px;
+  font-size: 27px;
+}
+.category h3 {
+  font-size: 16px;
+}
+/* Services */
+.services {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 19px;
+}
+.service {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 22px;
+}
+.service-top {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 17px;
+}
+.service-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--light-blue);
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 23px;
+}
+.service h3 {
+  font-size: 16px;
+}
+.service p {
+  color: var(--gray);
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: 43px;
+}
+.service button {
+  margin-top: 17px;
+  width: 100%;
+  padding: 11px;
+  border: 1px solid var(--blue);
+  background: white;
+  color: var(--blue);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.service button:hover {
+  background: var(--blue);
+  color: white;
+}
+/* Info */
+.info {
+  margin-top: 70px;
+  background: linear-gradient(120deg, #e7f1ff, #f6faff);
+  border-radius: 20px;
+  padding: 42px;
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+  align-items: center;
+}
+.info h2 {
+  font-size: 29px;
+  margin-bottom: 10px;
+}
+.info p {
+  color: var(--gray);
+  max-width: 600px;
+  line-height: 1.6;
+}
+.info button {
+  white-space: nowrap;
+  background: var(--blue);
+  color: white;
+  border: none;
+  padding: 14px 23px;
+  border-radius: 9px;
+  cursor: pointer;
+}
+/* Footer */
+footer {
+  background: #0d1d35;
+  color: white;
+  padding: 38px 20px;
+  margin-top: 60px;
+}
+.footer-content {
+  max-width: 1150px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+footer p {
+  color: #b7c0ce;
+  margin-top: 10px;
+}
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 20, 40, .58);
+  z-index: 500;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal.active {
+  display: flex;
+}
+.modal-box {
+  width: 100%;
+  max-width: 430px;
+  background: white;
+  border-radius: 18px;
+  padding: 30px;
+  position: relative;
+}
+.close {
+  position: absolute;
+  right: 17px;
+  top: 12px;
+  border: none;
+  background: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+.modal-box h2 {
+  margin-bottom: 8px;
+}
+.modal-box > p {
+  color: var(--gray);
+  margin-bottom: 22px;
+}
+.modal-box label {
+  display: block;
+  font-size: 14px;
+  margin: 13px 0 7px;
+}
+.modal-box input {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  outline: none;
+}
+.modal-box input:focus {
+  border-color: var(--blue);
+}
+.modal-box .submit {
+  width: 100%;
+  margin-top: 20px;
+  padding: 13px;
+  border: none;
+  border-radius: 8px;
+  background: var(--blue);
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+}
+.demo-note {
+  background: #fff7df;
+  color: #7a5600;
+  padding: 11px;
+  border-radius: 8px;
+  margin-top: 15px;
+  font-size: 12px;
+}
+/* Responsive */
+@media (max-width: 850px) {
+  .menu a {
+    display: none;
+  }
+  .categories {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .services {
+    grid-template-columns: 1fr 1fr;
+  }
+  .info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+@media (max-width: 570px) {
+  .nav {
+    height: 67px;
+    padding: 0 15px;
+  }
+  .logo {
+    font-size: 18px;
+  }
+  .logo-icon {
+    width: 38px;
+    height: 38px;
+  }
+  .login-btn {
+    padding: 10px 13px;
+  }
+  .hero {
+    min-height: 360px;
+    padding: 65px 15px;
+  }
+  .hero p {
+    font-size: 15px;
+  }
+  .search-box button {
+    padding: 0 14px;
+  }
+  .categories,
+  .services {
+    grid-template-columns: 1fr;
+  }
+  main {
+    padding: 42px 15px;
+  }
+  .info {
+    padding: 27px;
+  }
+  .footer-content {
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+<body>
+<header>
+  <nav class="nav">
+    <div class="logo">
+      <div class="logo-icon">e</div>
+      e-ҮЙЛЧИЛГЭЭ
+    </div>
+    <div class="menu">
+      <a href="#">Нүүр</a>
+      <a href="#services">Үйлчилгээнүүд</a>
+      <a href="#">Тусламж</a>
+      <button class="login-btn" onclick="openLogin()">Нэвтрэх</button>
+    </div>
+  </nav>
+</header>
+<section class="hero">
+  <div class="hero-content">
+    <h1>Төрийн үйлчилгээг нэг дороос</h1>
+    <p>Хялбар, хурдан, цахимаар — хүссэн үйлчилгээгээ хайж аваарай.</p>
+    <div class="search-box">
+      <input
+        id="searchInput"
+        type="text"
+        placeholder="Үйлчилгээ хайх..."
+        onkeyup="searchServices()"
+      >
+      <button onclick="searchServices()">🔍 Хайх</button>
+    </div>
+  </div>
+</section>
+<main>
+  <section>
+    <div class="section-title">
+      <h2>Үйлчилгээний ангилал</h2>
+      <p>Өөрт хэрэгтэй үйлчилгээг ангиллаар сонгоорой</p>
+    </div>
+    <div class="categories">
+      <div class="category">
+        <div class="category-icon">👤</div>
+        <h3>Иргэний бүртгэл</h3>
+      </div>
+      <div class="category">
+        <div class="category-icon">🏠</div>
+        <h3>Нийгмийн үйлчилгээ</h3>
+      </div>
+      <div class="category">
+        <div class="category-icon">🚗</div>
+        <h3>Тээврийн үйлчилгээ</h3>
+      </div>
+      <div class="category">
+        <div class="category-icon">📄</div>
+        <h3>Лавлагаа, тодорхойлолт</h3>
+      </div>
+    </div>
+  </section>
+  <section id="services">
+    <div class="section-title">
+      <h2>Түгээмэл үйлчилгээ</h2>
+      <p>Иргэдийн хамгийн их ашигладаг цахим үйлчилгээнүүд</p>
+    </div>
+    <div class="services" id="serviceList">
+      <article class="service" data-name="Иргэний үнэмлэхийн лавлагаа">
+        <div class="service-top">
+          <div class="service-icon">🪪</div>
+          <h3>Иргэний үнэмлэхийн лавлагаа</h3>
+        </div>
+        <p>Иргэний бүртгэлийн мэдээллийн лавлагаа авах.</p>
+        <button onclick="requestService('Иргэний үнэмлэхийн лавлагаа')">
+          Үйлчилгээ авах
+        </button>
+      </article>
+      <article class="service" data-name="Оршин суугаа газрын лавлагаа">
+        <div class="service-top">
+          <div class="service-icon">🏡</div>
+          <h3>Оршин суугаа газрын лавлагаа</h3>
+        </div>
+        <p>Бүртгэлтэй хаягийн талаарх демо лавлагаа авах.</p>
+        <button onclick="requestService('Оршин суугаа газрын лавлагаа')">
+          Үйлчилгээ авах
+        </button>
+      </article>
+      <article class="service" data-name="Нийгмийн даатгалын мэдээлэл">
+        <div class="service-top">
+          <div class="service-icon">🛡️</div>
+          <h3>Нийгмийн даатгалын мэдээлэл</h3>
+        </div>
+        <p>Даатгалын мэдээллийг демо хэлбэрээр харах.</p>
+        <button onclick="requestService('Нийгмийн даатгалын мэдээлэл')">
+          Үйлчилгээ авах
+        </button>
+      </article>
+      <article class="service" data-name="Жолоочийн мэдээлэл">
+        <div class="service-top">
+          <div class="service-icon">🚘</div>
+          <h3>Жолоочийн мэдээлэл</h3>
+        </div>
+        <p>Жолооны үнэмлэхтэй холбоотой жишээ мэдээлэл.</p>
+        <button onclick="requestService('Жолоочийн мэдээлэл')">
+          Үйлчилгээ авах
+        </button>
+      </article>
+      <article class="service" data-name="Татварын лавлагаа">
+        <div class="service-top">
+          <div class="service-icon">💳</div>
+          <h3>Татварын лавлагаа</h3>
+        </div>
+        <p>Татварын мэдээллийн демо лавлагаа авах.</p>
+        <button onclick="requestService('Татварын лавлагаа')">
+          Үйлчилгээ авах
+        </button>
+      </article>
+      <article class="service" data-name="Боловсролын мэдээлэл">
+        <div class="service-top">
+          <div class="service-icon">🎓</div>
+          <h3>Боловсролын мэдээлэл</h3>
+        </div>
+        <p>Боловсролын бүртгэлийн жишээ мэдээлэл харах.</p>
+        <button onclick="requestService('Боловсролын мэдээлэл')">
+          Үйлчилгээ авах
+        </button>
+      </article>
+    </div>
+  </section>
+  <section class="info">
+    <div>
+      <h2>Миний хүсэлтүүд</h2>
+      <p>
+        Илгээсэн үйлчилгээний хүсэлт, явц болон демо лавлагаагаа
+        нэг дороос хянах боломжтой.
+      </p>
+    </div>
+    <button onclick="showRequests()">Хүсэлт харах →</button>
+  </section>
+</main>
+<footer>
+  <div class="footer-content">
+    <div>
+      <h2>e-ҮЙЛЧИЛГЭЭ</h2>
+      <p>Төрийн цахим үйлчилгээний сургалтын демо платформ</p>
+    </div>
+    <div>
+      <strong>Тусламж</strong>
+      <p>Демо систем • Жишээ мэдээлэл</p>
+    </div>
+  </div>
+</footer>
+<!-- Login modal -->
+<div class="modal" id="loginModal">
+  <div class="modal-box">
+    <button class="close" onclick="closeLogin()">×</button>
+    <h2>Демо нэвтрэх</h2>
+    <p>Энэ нь жинхэнэ нэвтрэх систем биш.</p>
+    <label>Хэрэглэгчийн нэр</label>
+    <input type="text" placeholder="demo хэрэглэгч">
+    <label>Нууц үг</label>
+    <input type="password" placeholder="••••••••">
+    <button class="submit" onclick="demoLogin()">Нэвтрэх</button>
+    <div class="demo-note">
+      ⚠️ Жинхэнэ регистрийн дугаар, нууц үг болон хувийн мэдээлэл
+      оруулахгүй. Энэхүү веб нь зөвхөн демо загвар юм.
+    </div>
+  </div>
+</div>
+<script>
+function openLogin() {
+  document.getElementById("loginModal").classList.add("active");
+}
+function closeLogin() {
+  document.getElementById("loginModal").classList.remove("active");
+}
+function demoLogin() {
+  closeLogin();
+  alert("Амжилттай нэвтэрлээ! Та демо хэрэглэгчээр нэвтэрсэн байна.");
+}
+function requestService(name) {
+  alert(
+    "“" + name + "” үйлчилгээний демо хүсэлт үүсгэлээ.\\n\\n" +
+    "Төлөв: Хүсэлт хүлээн авсан"
+  );
+}
+function showRequests() {
+  alert(
+    "Миний хүсэлтүүд\\n\\n" +
+    "1. Оршин суугаа газрын лавлагаа — Боловсруулж байна\\n" +
+    "2. Иргэний үнэмлэхийн лавлагаа — Дууссан"
+  );
+}
+function searchServices() {
+  const value = document
+    .getElementById("searchInput")
+    .value
+    .toLowerCase()
+    .trim();
+  const services = document.querySelectorAll(".service");
+  let found = 0;
+  services.forEach(service => {
+    const name = service.dataset.name.toLowerCase();
+    if (name.includes(value)) {
+      service.style.display = "block";
+      found++;
+    } else {
+      service.style.display = "none";
+    }
+  });
+  if (value !== "") {
+    document.getElementById("services")
+      .scrollIntoView({ behavior: "smooth" });
+  }
+}
+window.onclick = function(event) {
+  const modal = document.getElementById("loginModal");
+  if (event.target === modal) {
+    closeLogin();
+  }
+};
+</script>
+</body>
+</html>
